@@ -17,6 +17,3 @@ public class Loops09C {
         System.out.printf("The average is %.2f", avg);
     }
 }
-
-//The average of near 5 makes sense. (1+10)/2 = 5.5
-//Increasing loops# causes the average to approach 5.50 consistently.

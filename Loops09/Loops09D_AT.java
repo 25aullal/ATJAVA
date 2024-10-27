@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 class Dice {
-
+//need to roll, display, or quit
     int dice_roll;
     void rollDice() {
         boolean loopFlag = true;
