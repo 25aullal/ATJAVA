@@ -1,7 +1,9 @@
 package Loops09;
 import java.util.Scanner;
 
-public class Loops09D_AT {
+
+class Dice {
+
     int dice_roll;
     void rollDice() {
         boolean loopFlag = true;
@@ -17,11 +19,15 @@ public class Loops09D_AT {
     int viewDice() {
         return dice_roll;
     }
+}
+
+public class Loops09D_AT {
+   
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int i = 0;
-        Loops09D_AT dice = new Loops09D_AT();
+        Dice dice = new Dice();
         while (i == 0) {
             System.out.print("Enter 'r' to roll, 'd' to display, or 'q' to quit: ");
             String action = (in.nextLine()).toUpperCase();
