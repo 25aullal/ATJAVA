@@ -39,12 +39,12 @@ public class Debug10A {
 
         // Use conditional statements to determine what discount is.
         double discount = 0.0;
-        if (num > 6) {
-            discount = 0.025;
+        if (num > 24) {
+            discount = 0.15;
         } else if (num > 12) {
             discount = 0.05;
-        } else if (num > 24) {
-            discount = 0.15;
+        } else if (num > 6) {
+            discount = 0.025;
         }
 
         // calculate and display values to user.
