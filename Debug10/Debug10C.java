@@ -24,7 +24,7 @@ package Debug10;
 
 import java.util.Scanner;
 
-public class Debug10A {
+public class Debug10C {
     public static void main(String[] args) throws Exception {
         // cookies are $0.99 apiece.
         final double COST_OF_COOKIE = 0.99;
