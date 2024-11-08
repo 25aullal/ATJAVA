@@ -7,10 +7,9 @@ public class UnitTestB {
         int x = in.nextInt();
         int y = in.nextInt();
         int z = in.nextInt();
-        //System.out.printf("%d, %d, %d", x,y,z);
-        int first = x;
-        int second = y;
-        int third = z;
+        //debug System.out.printf("%d, %d, %d", x,y,z);
+        
+        
         if (x < y) {
             int temp = y;
             y = x;
