@@ -48,7 +48,7 @@ class DescartesMaker {
 public class AT07B {
     public static void main(String[] args) {
 //can set coords here:
-        DescartesMaker plane = new DescartesMaker(3,3);
+        DescartesMaker plane = new DescartesMaker();
         Scanner in = new Scanner(System.in);
         int i = 0;
         
