@@ -1,10 +1,19 @@
-
 import java.util.Scanner;
 
 class DescartesMaker {
-    private int x = 0;
-    private int y = 0;
+    private int x;
+    private int y;
     
+//constructors
+    public DescartesMaker() {
+        x = 0;
+        y = 0;
+    }
+
+    public DescartesMaker(int xInitial, int yInitial) {
+        x = xInitial;
+        y = yInitial;
+    }
 
     public void setPoint(int xCoord, int yCoord) {
         x = xCoord;
@@ -38,7 +47,8 @@ class DescartesMaker {
 }
 public class AT07B {
     public static void main(String[] args) {
-        DescartesMaker plane = new DescartesMaker();
+//can set coords here:
+        DescartesMaker plane = new DescartesMaker(3,3);
         Scanner in = new Scanner(System.in);
         int i = 0;
         
