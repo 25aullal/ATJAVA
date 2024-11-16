@@ -1,4 +1,3 @@
-import java.time.DayOfWeek;
 import java.util.Scanner;
 
 public class Card {
