@@ -1,4 +1,4 @@
-public class Numbers {
+public class Lesson14B {
     public static void main(String[] args) {
         int count = 0;
         double total = 0.0;
