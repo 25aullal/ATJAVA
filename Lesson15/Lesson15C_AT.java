@@ -23,7 +23,7 @@ public static boolean linearSearch(int[] array, int tgtVal) {
 }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        final int LENGTH = 100000000;
+        final int LENGTH = 10000000;
         double ratioTotal = 0;
         for (int x = 1; x <=10;x++) {
             //create and fill array
@@ -46,7 +46,6 @@ public static boolean linearSearch(int[] array, int tgtVal) {
             long elapsedBin = endBin-startBin;
 
             double ratio = (double)elapsedLin/elapsedBin;
-            System.out.print("Ratio = "+(int)ratio);
             ratioTotal+=ratio;
 
             //output
@@ -64,6 +63,7 @@ public static boolean linearSearch(int[] array, int tgtVal) {
 
             System.out.println("Linear took "+elapsedLin+" ns");
             System.out.println("Binary took "+elapsedBin+" ns");
+            System.out.printf("Ratio = %.2f%n", ratio);
 
         }
 
