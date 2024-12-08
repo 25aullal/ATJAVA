@@ -46,6 +46,7 @@ public static boolean linearSearch(int[] array, int tgtVal) {
             long elapsedBin = endBin-startBin;
 
             double ratio = (double)elapsedLin/elapsedBin;
+            System.out.print("Ratio = "+(int)ratio);
             ratioTotal+=ratio;
 
             //output
