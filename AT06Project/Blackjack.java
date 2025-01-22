@@ -74,6 +74,7 @@ public class Blackjack {
         System.out.println("/ __)/  \\ / )( \\ / __) / _\\ (  _ \\   / __) / _\\ / ___)(  )(  ( \\ /  \\ ");
         System.out.println("( (__(  O )) \\/ (( (_ \\/    \\ )   /  ( (__ /    \\\\___ \\ )( /    /(  O )");
         System.out.println(" \\___)\\__/ \\____/ \\___/\\_/\\_/(__\\_)   \\___)\\_/\\_/(____/(__)\\_)__) \\__/ ");
+        // used website for ascii
     }
 
     public static void playGame() {
