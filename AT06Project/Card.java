@@ -16,11 +16,7 @@ public class Card {
     private boolean viewable;
 
     public Card(boolean viewable) {
-        if (viewable) {
-            viewable = true;
-        } else {
-            viewable = false;
-        }
+        this.viewable = viewable;
         int valSuit = (int) (5 * Math.random());
         if (valSuit == 0) {
             suit = Suit.SPADE;
@@ -132,7 +128,8 @@ public class Card {
         }
     }
 
-    public int getValue(Card.Rank rank) {
+    public int getValue() {
+
         if (rank == Rank.TWO) {
             return 2;
         } else if (rank == Rank.THREE) {
@@ -160,6 +157,10 @@ public class Card {
         } else {
             return 11;
         }
+    }
+
+    public void reveal() {
+        this.viewable = true;
     }
 
     public static void main(String[] args) {
