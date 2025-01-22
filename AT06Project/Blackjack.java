@@ -22,7 +22,6 @@ public class Blackjack {
         for (int i = 0; i < cards.size(); i++) {
             c = cards.get(i);
             c.getFace();
-            delay(500);
             System.out.print(" ");
         }
         System.out.println();
@@ -117,7 +116,9 @@ public class Blackjack {
             reply = in.nextLine();
             if (reply.equals("h")) {
                 playerCards.add(new Card(true));
+                delay(500);
                 drawBoard(playerCards, dealerCards);
+                delay(500);
             } else if (reply.equals("s")) {
                 doLoop = false;
             }
@@ -138,7 +139,9 @@ public class Blackjack {
             while (dealer < 17) {
                 dealerCards.add(new Card(true));
                 dealer = calcScore(dealerCards);
+                delay(500);
                 drawBoard(playerCards, dealerCards);
+                delay(500);
 
             }
 
