@@ -1,7 +1,3 @@
-
-import java.util.Scanner;
-import java.util.ArrayList;
-
 public class Card {
     public enum Suit {
         SPADE, HEART, CLUB, DIAMOND
@@ -97,34 +93,34 @@ public class Card {
             }
 
             if (rank == Rank.TWO) {
-                System.out.println(two);
+                System.out.print(two);
             } else if (rank == Rank.THREE) {
-                System.out.println(three);
+                System.out.print(three);
             } else if (rank == Rank.FOUR) {
-                System.out.println(four);
+                System.out.print(four);
             } else if (rank == Rank.FIVE) {
-                System.out.println(five);
+                System.out.print(five);
             } else if (rank == Rank.SIX) {
-                System.out.println(six);
+                System.out.print(six);
             } else if (rank == Rank.SEVEN) {
-                System.out.println(seven);
+                System.out.print(seven);
             } else if (rank == Rank.EIGHT) {
-                System.out.println(eight);
+                System.out.print(eight);
             } else if (rank == Rank.NINE) {
-                System.out.println(nine);
+                System.out.print(nine);
             } else if (rank == Rank.TEN) {
-                System.out.println(ten);
+                System.out.print(ten);
             } else if (rank == Rank.JACK) {
-                System.out.println(jack);
+                System.out.print(jack);
             } else if (rank == Rank.QUEEN) {
-                System.out.println(queen);
+                System.out.print(queen);
             } else if (rank == Rank.KING) {
-                System.out.println(king);
+                System.out.print(king);
             } else {
-                System.out.println(ace);
+                System.out.print(ace);
             }
         } else {
-            System.out.println("##");
+            System.out.print("##");
         }
     }
 

@@ -4,15 +4,28 @@ import java.util.ArrayList;
 public class Blackjack {
     static Scanner in = new Scanner(System.in);
 
+    public static void delay(long msec) {
+        try {
+            Thread.sleep(msec);
+        } catch (Exception e) {
+
+        }
+    }
+
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
     public static void printCards(ArrayList<Card> cards) {
+        Card c;
         for (int i = 0; i < cards.size(); i++) {
-            System.out.print(cards.get(i));
+            c = cards.get(i);
+            c.getFace();
+            delay(500);
+            System.out.print(" ");
         }
+        System.out.println();
     }
 
     public static void drawBoard(ArrayList<Card> playerCards, ArrayList<Card> dealerCards) {
@@ -34,13 +47,6 @@ public class Blackjack {
         }
     }
 
-    public static String promptUser(String sending) {
-        System.out.println();
-        System.out.print(sending);
-        String reply = in.nextLine().toLowerCase();
-        return reply;
-    }
-
     public static int calcScore(ArrayList<Card> cards) {
         int score = 0;
         int acesCount = 0;
@@ -56,9 +62,10 @@ public class Blackjack {
             if (score > 21) {
                 while (acesCount > 0) {
                     score -= 10;
-                    acesCount++;
+                    acesCount--;
                 }
             }
+            i++;
         }
         return score;
     }
@@ -105,8 +112,9 @@ public class Blackjack {
         boolean doLoop = true;
         String reply;
         while (doLoop) {
-            drawBoard(playerCards, dealerCards);
-            reply = promptUser("Enter H to hit or S to stand");
+
+            System.out.println("Enter H to hit or S to stand");
+            reply = in.nextLine();
             if (reply.equals("h")) {
                 playerCards.add(new Card(true));
                 drawBoard(playerCards, dealerCards);
@@ -123,43 +131,53 @@ public class Blackjack {
         if (player > 21) {
             revealCards(dealerCards);
             drawBoard(playerCards, dealerCards);
-            System.out.print("you lose");
-        }
-
-        revealCards(dealerCards);
-        dealer = calcScore(dealerCards);
-        while (dealer < 17) {
-            dealerCards.add(new Card(true));
-            dealer = calcScore(dealerCards);
-            drawBoard(playerCards, dealerCards);
-
-        }
-
-        drawBoard(playerCards, dealerCards);
-        if (dealer > 21) {
-            System.out.println("Dealer busts! You win.");
-        } else if (player > dealer) {
-            System.out.println("You have a higher score. You win!");
-        } else if (dealer > player) {
-            System.out.println("Dealer has a higher score. You lose!");
+            System.out.println("Bust! You lose.");
         } else {
-            System.out.println("You tied!");
+            revealCards(dealerCards);
+            dealer = calcScore(dealerCards);
+            while (dealer < 17) {
+                dealerCards.add(new Card(true));
+                dealer = calcScore(dealerCards);
+                drawBoard(playerCards, dealerCards);
+
+            }
+
+            drawBoard(playerCards, dealerCards);
+            if (dealer > 21) {
+                System.out.println("Dealer busts! You win.");
+            } else if (player > dealer) {
+                System.out.println("You have a higher score. You win!");
+            } else if (dealer > player) {
+                System.out.println("Dealer has a higher score. You lose!");
+            } else {
+                System.out.println("You tied!");
+            }
         }
+
     }
 
     public static void main(String[] args) {
         in = new Scanner(System.in);
-        displayTitle();
         boolean playAgain = true;
+        displayTitle();
+        System.out.println("Welcome to the Cougar Casino! Type P to play, or Q to quit.");
+        String response = in.nextLine().toUpperCase();
+        if (response.equals("P")) {
+            clearScreen();
+        } else if (response.equals("Q")) {
+            System.out.println("Sad to see you go! Thanks for coming.");
+            playAgain = false;
+        }
+
         while (playAgain) {
             playGame();
             System.out.print("Type P to play again, or Q to quit: ");
-            String willYouPlayAgain = in.next().toUpperCase();
+            response = in.nextLine().toUpperCase();
 
-            if (willYouPlayAgain.equals("P")) {
+            if (response.equals("P")) {
                 clearScreen();
-            } else if (willYouPlayAgain.equals("Q")) {
-                System.out.println("Sad to see you go! Thanks for playing.");
+            } else if (response.equals("Q")) {
+                System.out.println("Sad to see you go! Thanks for coming.");
                 playAgain = false;
             }
         }
