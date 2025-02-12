@@ -14,6 +14,7 @@ public class Manager extends Employee {
     // note that I added a method to Employee.java
     public void printStats() {
         super.printStats();
+        System.out.print("; Bonus: " + bonus);
     }
 
 }

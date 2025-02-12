@@ -33,7 +33,7 @@ public class Employee {
 
     // added method
     public void printStats() {
-        System.out.printf("%-10s: Salary = $%,10.2f; Annual Income = $%,10.2f%n", getName(), getSalary(),
+        System.out.printf("%-10s: Salary = $%,10.2f; Annual Income = $%,10.2f", getName(), getSalary(),
                 getAnnualIncome());
     }
 }
