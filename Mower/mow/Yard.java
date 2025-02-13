@@ -43,8 +43,18 @@ public class Yard {
         return height;
     }
 
-    public void printYard() {
+    public void printYard(Mower mower) {
         clearScreen();
+        mower.mowUnderneath(this);
+        if (mower.getDirection() == 0) {
+            yard[mower.getRow()][mower.getColumn()] = '^';
+        } else if (mower.getDirection() == 1) {
+            yard[mower.getRow()][mower.getColumn()] = '>';
+        } else if (mower.getDirection() == 2) {
+            yard[mower.getRow()][mower.getColumn()] = 'v';
+        } else if (mower.getDirection() == 3) {
+            yard[mower.getRow()][mower.getColumn()] = '<';
+        }
         for (int i = 0; i < height + 2; i++) {
             for (int j = 0; j < width + 2; j++) {
                 if (j == width + 1) {
@@ -57,15 +67,6 @@ public class Yard {
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        Yard yard = new Yard();
-        System.out.println("Enter the height of the yard: ");
-        int height = in.nextInt();
-        System.out.println("Enter the width of the yard: ");
-        int width = in.nextInt();
-        yard.yardCreator(width, height);
-        yard.mowTile(width, height);
-        yard.printYard();
 
     }
 }
