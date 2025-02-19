@@ -20,7 +20,11 @@ public class Lawnmower {
         while (mower.updateMower(yard) == false) {
             while (mower.detectForward(yard) == ' ' || mower.detectForward(yard) == 'R') {
 
-                mower.turnRight();
+                if (mower.detectRight(yard) == 'R' || mower.detectRight(yard) == ' ') {
+                    mower.turnLeft();
+                } else {
+                    mower.turnRight();
+                }
 
                 yard.printYard(mower);
                 mower.mowUnderneath(yard);

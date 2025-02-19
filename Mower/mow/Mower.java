@@ -104,4 +104,40 @@ public class Mower {
         return true;
     }
 
+    public char detectBackward(Yard yard) {
+        if (direction == 0) {
+            return yard.yardGetter(column, row + 1);
+        } else if (direction == 1) {
+            return yard.yardGetter(column - 1, row);
+        } else if (direction == 2) {
+            return yard.yardGetter(column, row - 1);
+        } else {
+            return yard.yardGetter(column + 1, row);
+        }
+    }
+
+    public char detectRight(Yard yard) {
+        if (direction == 0) {
+            return yard.yardGetter(column + 1, row);
+        } else if (direction == 1) {
+            return yard.yardGetter(column, row + 1);
+        } else if (direction == 2) {
+            return yard.yardGetter(column - 1, row);
+        } else {
+            return yard.yardGetter(column, row - 1);
+        }
+    }
+
+    public char detectLeft(Yard yard) {
+        if (direction == 0) {
+            return yard.yardGetter(column - 1, row);
+        } else if (direction == 1) {
+            return yard.yardGetter(column, row - 1);
+        } else if (direction == 2) {
+            return yard.yardGetter(column + 1, row);
+        } else {
+            return yard.yardGetter(column, row + 1);
+        }
+    }
+
 }
