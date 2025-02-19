@@ -7,6 +7,14 @@ public class Yard {
     private int width;
     private int height;
 
+    public static void delay(long mseconds) {
+        try {
+            Thread.sleep(mseconds);
+        } catch (InterruptedException e) {
+            System.err.println("InterruptedException received!");
+        }
+    }
+
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -44,6 +52,7 @@ public class Yard {
     }
 
     public void printYard(Mower mower) {
+        delay(200);
         clearScreen();
         mower.mowUnderneath(this);
         if (mower.getDirection() == 0) {
