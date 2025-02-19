@@ -2,7 +2,7 @@ import mow.Yard;
 import mow.Mower;
 import java.util.Scanner;
 
-public class Lawnmower {
+public class LawnmowerSpiral {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the width dimension of your yard: ");
