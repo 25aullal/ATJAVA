@@ -39,7 +39,9 @@ public class Board extends JPanel {
         x_t = x_t - SIDE_LEN / 2;
         y_t = y_t - SIDE_LEN / 2;
         AffineTransform affineTransform = new AffineTransform();
+
         affineTransform.translate(x_t, y_t);
+        affineTransform.rotate(0.3926991, SIDE_LEN / 2, SIDE_LEN / 2);
 
         // get the transformed shape.
         Rectangle rect = new Rectangle(0, 0, SIDE_LEN, SIDE_LEN);
@@ -48,5 +50,7 @@ public class Board extends JPanel {
         // draw the transformed shape on the screen.
         g2d.setColor(Color.MAGENTA);
         g2d.fill(transformedShape);
+        g2d.setColor(Color.BLUE);
+        g2d.drawString("Hello, world!", 50, 50);
     }
 }
