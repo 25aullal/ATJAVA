@@ -1,4 +1,4 @@
-package sound;
+package AO3B.animate;
 
 import java.io.File;
 import java.io.IOException;
@@ -92,8 +92,6 @@ public class SoundClip {
     }
 
     public static void main(String[] args) {
-        SoundClip clip = new SoundClip("media/boing.wav");
-        clip.open();
-        clip.play(true);
+
     }
 }
