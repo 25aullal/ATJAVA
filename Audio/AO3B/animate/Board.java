@@ -31,7 +31,8 @@ public class Board extends JPanel {
     private int xSpeed = (int) (Math.random() * 5 + 1);
     private int ySpeed = (int) (Math.random() * 5 + 1);
     private double rSpeed = 0.08726645;
-    private SoundClip clip = new SoundClip("AO3B/media/boing.wav");
+    private SoundClip ow = new SoundClip("AO3B/media/ow.wav");
+    private SoundClip sitar = new SoundClip("AO3B/media/sitar.wav");
 
     private class ScheduledUpdate extends TimerTask {
 
@@ -62,13 +63,17 @@ public class Board extends JPanel {
         timer.scheduleAtFixedRate(new ScheduledUpdate(),
                 INITIAL_DELAY, PERIOD_INTERVAL);
 
+        sitar.open();
+        sitar.setLoop(true);
+        sitar.play();
+
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         AffineTransform affineTransform = new AffineTransform();
-        clip.open();
+        ow.open();
 
         if (img != null) {
 
@@ -80,19 +85,19 @@ public class Board extends JPanel {
             if (x - x_t <= xSpeed) {
                 xSpeed = Math.abs(xSpeed);
                 xSpeed++;
-                clip.play();
+                ow.play();
             } else if (x - x_t >= 720 - xSpeed) {
                 xSpeed++;
                 xSpeed = (-1) * Math.abs(xSpeed);
-                clip.play();
+                ow.play();
             } else if (y - y_t <= ySpeed) {
                 ySpeed = Math.abs(ySpeed);
                 ySpeed++;
-                clip.play();
+                ow.play();
             } else if (y - y_t >= 720 - ySpeed) {
                 ySpeed++;
                 ySpeed = (-1) * Math.abs(ySpeed);
-                clip.play();
+                ow.play();
             }
 
             g2d.drawImage(img, affineTransform, null);

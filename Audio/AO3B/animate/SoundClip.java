@@ -45,23 +45,28 @@ public class SoundClip {
     }
 
     public void play() {
-        if (clip != null) {
-            // if the clip is running, stop it before playing it again.
-            if (clip.isRunning()) {
-                clip.stop();
-                try {
-                    // sleep for a moment to give line time to stop playback.
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    System.err.println(e.getMessage());
+        if (loop == true) {
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } else {
+            if (clip != null) {
+                // if the clip is running, stop it before playing it again.
+                if (clip.isRunning()) {
+                    clip.stop();
+                    try {
+                        // sleep for a moment to give line time to stop playback.
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        System.err.println(e.getMessage());
+                    }
                 }
+
+                // start at the beginning of the clip
+                clip.setFramePosition(0);
+
+                clip.start();
             }
-
-            // start at the beginning of the clip
-            clip.setFramePosition(0);
-
-            clip.start();
         }
+
     }
 
     public void play(boolean wait) {
