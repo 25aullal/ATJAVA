@@ -61,7 +61,7 @@ public class Application extends JFrame {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            Application app = new Application("Basically Google");
+            Application app = new Application("Basically GTA 6");
             Board board = new Board();
             app.add(board);
             app.pack();
