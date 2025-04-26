@@ -1,3 +1,8 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.IOException;
+
 public class Employee {
     public static int lastIDUsed = 0;
 
@@ -6,7 +11,6 @@ public class Employee {
     private String firstName;
     private String lastName;
 
-    // constructor.
     public Employee() {
         this.firstName = "";
         this.lastName = "";
@@ -57,5 +61,19 @@ public class Employee {
         System.out.printf("%s, %s:%n", lastName, firstName);
         System.out.printf("  ID #   = %06d%n", id);
         System.out.printf("  Salary = $%,.2f%n", salary);
+    }
+
+    public void writeToStream(DataOutputStream outputStream) throws IOException {
+        outputStream.writeInt(id);
+        outputStream.writeDouble(salary);
+        outputStream.writeUTF(firstName);
+        outputStream.writeUTF(lastName);
+    }
+
+    public void readFromStream(DataInputStream inputStream) throws IOException {
+        this.id = inputStream.readInt();
+        this.salary = inputStream.readDouble();
+        this.firstName = inputStream.readUTF();
+        this.lastName = inputStream.readUTF();
     }
 }
