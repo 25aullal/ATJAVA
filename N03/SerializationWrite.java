@@ -48,8 +48,27 @@ public class SerializationWrite {
             }
             System.out.println("Data saved to \"" + filepath + "\"");
         } catch (IOException e) {
-            System.err.println("Error writing to output file.");
-            System.err.println(e.getMessage());
+            System.out.println("Exception caught when trying to listen on port "
+                    + portNumber + " or listening for a connection");
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Goodbye!");
+        }
+    }
+
+    static void broadcastMessage(String message) {
+        // iterate through list of connections and send message to everyone.
+        for (ClientHandler handler : clients) {
+            if (handler != null) {
+                handler.sendMessage(message);
+            }
+        }
+    }
+
+    static void removeClient(ClientHandler tgtHandler) {
+        int index = clients.indexOf(tgtHandler);
+        if (index > 0) {
+            clients.remove(index);
         }
     }
 }
