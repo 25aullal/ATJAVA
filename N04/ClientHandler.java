@@ -16,7 +16,6 @@ public class ClientHandler implements Runnable {
 
     @Override
     public void run() {
-        // use try with catch statement to create output and input streams.
         try {
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -24,7 +23,6 @@ public class ClientHandler implements Runnable {
                     + " on port " + clientSocket.getPort());
             String inputLine;
 
-            // get name from the client.
             out.println("Enter your user name: ");
             name = in.readLine();
 
@@ -33,11 +31,8 @@ public class ClientHandler implements Runnable {
             ChatServer.broadcastMessage(name + " has joined the chat server!");
 
             while ((inputLine = in.readLine()) != null) {
-                // include user's name with the message.
                 String message = String.format("%s: %s", name, inputLine);
-                // display message on server's standard output.
                 System.out.println("received - " + message);
-                // "broadcast" the message to everyone in the client list.
                 ChatServer.broadcastMessage(message);
             }
 
@@ -46,7 +41,6 @@ public class ClientHandler implements Runnable {
         } catch (IOException e) {
             System.err.println("Error handling client: " + e.getMessage());
         } finally {
-            // make sure to close all non-null connections.
             if (out != null) {
                 out.close();
             }
@@ -58,7 +52,6 @@ public class ClientHandler implements Runnable {
                 }
             }
 
-            // remove from list of clients.
             ChatServer.removeClient(this);
         }
     }

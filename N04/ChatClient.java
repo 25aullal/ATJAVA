@@ -9,7 +9,6 @@ public class ChatClient {
     public static boolean doneFlag;
 
     public static void main(String[] args) {
-        // check to make sure they provided two arguments.
         if (args.length != 2) {
             System.err.println(
                     "Usage: java ChatClient <host name> <port number>");
@@ -27,30 +26,19 @@ public class ChatClient {
             System.exit(1);
         }
 
-        // use try with resources statement.
         try {
-            // try to establish connection with server.
             Socket socket = new Socket(hostName, portNumber);
-
-            // get output and input streams to communicate with the server.
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader stdIn = new BufferedReader(
                     new InputStreamReader(System.in));
-
-            // display connection info.
             System.out.println("Connected to server " + socket.getInetAddress().getHostAddress()
                     + " on port " + socket.getPort());
-
-            // launch thread to handle messages from server.
             MessageHandler messageHandler = new MessageHandler(socket);
             new Thread(messageHandler).start();
 
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
-                // get input from the user and send it to the server.
                 out.println(userInput);
-                // we don't have to read from the server in this loop since we have
-                // a separate thread to process messages from the server.
             }
 
             System.out.println("Goodbye!");

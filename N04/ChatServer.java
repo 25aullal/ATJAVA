@@ -7,26 +7,17 @@ public class ChatServer {
     static ArrayList<ClientHandler> clients;
 
     public static void main(String[] args) {
-        // get port number from the input arguments;
         int portNumber = 8675;
-
-        // create an ArrayList to hold our client connections.
         clients = new ArrayList<>();
-
-        // use try with resources to create server socket.
         try (ServerSocket serverSocket = new ServerSocket(portNumber);) {
             System.out.println("Server is listening on port " + portNumber);
 
             while (true) {
                 try {
-                    Socket clientSocket = serverSocket.accept(); // Accept incoming client connection
+                    Socket clientSocket = serverSocket.accept();
                     System.out.println("Client connected: " + clientSocket.getInetAddress().getHostAddress());
-
-                    // Create a new thread to handle the client
                     ClientHandler clientHandler = new ClientHandler(clientSocket);
                     new Thread(clientHandler).start();
-
-                    // add clientHandler to array list.
                     clients.add(clientHandler);
 
                 } catch (IOException e) {
@@ -44,7 +35,6 @@ public class ChatServer {
     }
 
     static void broadcastMessage(String message) {
-        // iterate through list of connections and send message to everyone.
         for (ClientHandler handler : clients) {
             if (handler != null) {
                 handler.sendMessage(message);

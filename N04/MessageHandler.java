@@ -3,9 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-/**
- * Handle messages from the server.
- */
 public class MessageHandler implements Runnable {
     private Socket socket;
     private BufferedReader in;
